@@ -24,13 +24,18 @@ defmodule BUPE.Parser do
           &parse_xml(&2, xml, &1)
         )
 
-      %{
+      dbg()
+
+      result = %{
         config
         | pages: extract_item_content(epub, root_file, config.pages || []),
           images: extract_item_content(epub, root_file, config.images || []),
           styles: extract_item_content(epub, root_file, config.styles || []),
           scripts: extract_item_content(epub, root_file, config.scripts || [])
       }
+
+      dbg()
+      result
     end
   end
 
