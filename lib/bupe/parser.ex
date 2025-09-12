@@ -205,15 +205,9 @@ defmodule BUPE.Parser do
   end
 
   defp parse_xml(%BUPE.Config{version: "2.0"} = config, xml, :toc) do
-    with [toc_item] <-
-           xml
-           |> find_xml(filter: "/package/spine/@toc", type: :attribute)
-           |> then(
-             &find_xml(xml,
-               filter: "/package/manifest/item[@id='#{&1}']",
-               type: :element
-             )
-           ) do
+    with toc_id <- find_xml(xml, filter: "/package/spine/@toc", type: :attribute),
+         [toc_item] <-
+           find_xml(xml, filter: "/package/manifest/item[@id='#{toc_id}']", type: :element) do
       %{config | toc: [toc_item]}
     else
       [] ->
