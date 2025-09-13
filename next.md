@@ -1,3 +1,3 @@
-clean up the single-clause with section @/Users/zili/code/bupe/lib/bupe/parser.ex:208-217
-it's hard to argue about what the code is doing here with only one single with clause
-we should separate out the pipes into different with clause, with each clause returning some variable
+– Figure out what nav/toc data is during build, and then consider whether parse function would wan to match that data structure 
+– Maybe have a few test case for parse 
+– using dbg, find out what the data look like in the pipeline of find_xml. What if there is no toc attribute? Should there be a else clause for that scenario.
