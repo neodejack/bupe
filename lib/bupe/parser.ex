@@ -259,7 +259,7 @@ defmodule BUPE.Parser do
   defp find_manifest(xml, media_type), do: find_manifest(xml, [media_type])
 
   defp find_xml(xml, filter: filter, type: :attribute),
-    do: filter |> xpath_string(xml) |> transform() |> dbg()
+    do: filter |> xpath_string(xml) |> transform()
 
   defp find_xml(xml, filter: filter, type: type),
     do: filter |> xpath_string(xml) |> transform(from: type)
